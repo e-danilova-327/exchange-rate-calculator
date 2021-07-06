@@ -15,7 +15,7 @@ const getExchangeRates = () => {
     )
         .then((response) => response.json())
         .then((data) => {
-            const rate = data.rates[convertedCurrency];
+            const rate = data.conversion_rates[convertedCurrency];
             exchangeTxt.innerText = `1 ${baseCurrency} = ${rate} ${convertedCurrency}`;
 
             amount2.value = (amount1.value * rate).toFixed(2);
@@ -37,6 +37,7 @@ const swapCurrency = () => {
 
     document.getElementById('first').value = currency1;
     document.getElementById('second').value = currency2;
+    getExchangeRates();
 };
 
 getExchangeRates();
